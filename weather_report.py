@@ -68,6 +68,16 @@ def weather_tip(weather):
         return "Looks like a comfortable day! 😊"
     else:
         return "Have a great day!"
+    
+def outfit_recommendation(high):
+    if high >= 28:
+        return "👕 Wear light clothes. It's going to be hot!"
+    elif high >= 23:
+        return "👕 A T-shirt should be comfortable today!"
+    elif high >= 18:
+        return "🧥 A light jacket would be a good choice!"
+    else:
+        return "🧣 Wear something warm today!"
 
 
 def show_today():
@@ -84,6 +94,7 @@ def show_today():
     print(f"🌡️ Low : {today['low']}°C")
 
     print(f"\n💡 Tip: {weather_tip(today['weather'])}")
+    print(f"👕 Outfit: {outfit_recommendation(today['high'])}")
 
 
 def show_forecast():
@@ -99,6 +110,7 @@ def show_forecast():
         print(f"🌡️ Low  : {day['low']}°C")
         print(f"💧 Humidity: {day['humidity']}%")
         print(f"💬 {weather_tip(day['weather'])}")
+        print(f"👕 {outfit_recommendation(day['high'])}")
         print("-" * 45)
 
 
