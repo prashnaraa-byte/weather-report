@@ -6,6 +6,7 @@
 # https://github.com/prashnaraa-byte/weather-report
 # ==========================================
 
+import random
 
 weather_data = [
     {
@@ -91,7 +92,18 @@ def weather_score(weather, high):
     else:
         return "⭐⭐⭐ Average"
 
-
+def weather_score(weather, high):
+    if weather == "Sunny" and 20 <= high <= 28:
+        return "⭐⭐⭐⭐⭐ Excellent!"
+    elif weather == "Partly Cloudy":
+        return "⭐⭐⭐⭐ Very Good!"
+    elif weather == "Cloudy":
+        return "⭐⭐⭐ Not Bad!"
+    elif weather == "Rainy":
+        return "⭐⭐ Could Be Better!"
+    else:
+        return "⭐⭐⭐ Average"
+    
 def show_today():
     today = weather_data[0]
 
@@ -163,7 +175,32 @@ def show_statistics():
         f"{coldest_day['day']} ({coldest_day['low']}°C)"
     )
 
+def show_score():
+    today = weather_data[0]
 
+    print("\n" + "=" * 45)
+    print("           ⭐ WEATHER SCORE")
+    print("=" * 45)
+
+    print(f"\n📍 Cheonan")
+    print(f"{today['icon']} {today['weather']}")
+    print("\nToday's score:")
+    print(f"⭐ {weather_score(today['weather'], today['high'])}")
+def random_weather_fact():
+    facts = [
+        "☀️ The Sun is a star!",
+        "🌧️ Rain helps plants and crops grow.",
+        "☁️ Clouds are made of tiny water droplets.",
+        "🌈 A rainbow can appear when sunlight passes through water droplets.",
+        "❄️ Snow is made of ice crystals."
+    ]
+
+    print("\n" + "=" * 45)
+    print("          🎲 RANDOM WEATHER FACT")
+    print("=" * 45)
+
+    print(f"\n{random.choice(facts)}")
+    
 def main():
     while True:
         print("\n")
@@ -195,11 +232,7 @@ def main():
             show_tip()
 
         elif choice == "4":
-                    print("\n╔═══════════════════════════════════════════╗")
-                    print("║   👋 Thanks for using Cheonan Weather!   ║")
-                    print("║             See you next time!            ║")
-                    print("╚═══════════════════════════════════════════╝")
-                    break
+            show_score()
         elif choice == "5":
             random_weather_fact()
 
