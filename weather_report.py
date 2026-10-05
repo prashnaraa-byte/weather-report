@@ -138,6 +138,31 @@ def show_tip():
     print(f"\nToday's weather: {today['icon']} {today['weather']}")
     print(f"\n💡 {weather_tip(today['weather'])}")
 
+def show_statistics():
+    average_high = sum(day["high"] for day in weather_data) / len(weather_data)
+    average_low = sum(day["low"] for day in weather_data) / len(weather_data)
+
+    warmest_day = max(weather_data, key=lambda day: day["high"])
+    coldest_day = min(weather_data, key=lambda day: day["low"])
+
+    print("\n" + "=" * 45)
+    print("          📊 WEATHER STATISTICS")
+    print("=" * 45)
+
+    print(f"\n📍 Cheonan, South Korea")
+    print(f"🌡️ Average High: {average_high:.1f}°C")
+    print(f"🌡️ Average Low : {average_low:.1f}°C")
+
+    print(
+        f"\n🔥 Warmest Day: "
+        f"{warmest_day['day']} ({warmest_day['high']}°C)"
+    )
+
+    print(
+        f"🥶 Coldest Day: "
+        f"{coldest_day['day']} ({coldest_day['low']}°C)"
+    )
+
 
 def main():
     while True:
@@ -153,7 +178,10 @@ def main():
         print("1. ☀️ Check today's weather")
         print("2. 📅 See 5-day forecast")
         print("3. 🎒 Get today's weather tip")
-        print("4. 🚪 Exit")
+        print("4. ⭐ Check weather score")
+        print("5. 🎲 Get a random weather fact")
+        print("6. 📊 See temperature statistics")
+        print("7. 🚪 Exit")
 
         choice = input("\n👉 Enter your choice: ")
 
@@ -167,6 +195,18 @@ def main():
             show_tip()
 
         elif choice == "4":
+                    print("\n╔═══════════════════════════════════════════╗")
+                    print("║   👋 Thanks for using Cheonan Weather!   ║")
+                    print("║             See you next time!            ║")
+                    print("╚═══════════════════════════════════════════╝")
+                    break
+        elif choice == "5":
+            random_weather_fact()
+
+        elif choice == "6":
+            show_statistics()
+
+        elif choice == "7":
             print("\n╔═══════════════════════════════════════════╗")
             print("║   👋 Thanks for using Cheonan Weather!   ║")
             print("║             See you next time!            ║")
@@ -175,7 +215,7 @@ def main():
 
         else:
             print("\n❌ Invalid choice.")
-            print("Please enter 1, 2, 3, or 4.")
+            print("Please enter a number between 1 and 7.")
 
         input("\nPress Enter to return to the menu...")
 
