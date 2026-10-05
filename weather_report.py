@@ -9,12 +9,14 @@
 
 weather_data = [
     {
-        "day": "Monday",
-        "date": "September 29",
-        "weather": "Sunny",
-        "icon": "☀️",
-        "high": 27,
-        "low": 18
+    "day": "Monday",
+    "date": "September 29",
+    "weather": "Sunny",
+    "icon": "☀️",
+    "high": 27,
+    "low": 18,
+    "humidity": 55
+
     },
     {
         "day": "Tuesday",
@@ -22,7 +24,8 @@ weather_data = [
         "weather": "Cloudy",
         "icon": "☁️",
         "high": 25,
-        "low": 17
+        "low": 17,
+        "humidity": 65
     },
     {
         "day": "Wednesday",
@@ -30,7 +33,8 @@ weather_data = [
         "weather": "Rainy",
         "icon": "🌧️",
         "high": 23,
-        "low": 16
+        "low": 16,
+        "humidity": 75
     },
     {
         "day": "Thursday",
@@ -38,7 +42,8 @@ weather_data = [
         "weather": "Partly Cloudy",
         "icon": "⛅",
         "high": 24,
-        "low": 17
+        "low": 17,
+        "humidity": 60
     },
     {
         "day": "Friday",
@@ -46,7 +51,8 @@ weather_data = [
         "weather": "Sunny",
         "icon": "☀️",
         "high": 26,
-        "low": 18
+        "low": 18,
+        "humidity": 50
     }
 ]
 
@@ -91,6 +97,7 @@ def show_forecast():
         print(f"Weather : {day['weather']}")
         print(f"🌡️ High : {day['high']}°C")
         print(f"🌡️ Low  : {day['low']}°C")
+        print(f"💧 Humidity: {day['humidity']}%")
         print(f"💬 {weather_tip(day['weather'])}")
         print("-" * 45)
 
