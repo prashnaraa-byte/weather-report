@@ -5,7 +5,7 @@
 # GitHub Repository:
 # https://github.com/prashnaraa-byte/weather-report
 # ==========================================
-
+import random
 
 weather_data = [
     {
@@ -138,6 +138,55 @@ def show_tip():
     print(f"\nToday's weather: {today['icon']} {today['weather']}")
     print(f"\n💡 {weather_tip(today['weather'])}")
 
+def show_score():
+    today = weather_data[0]
+
+    print("\n" + "=" * 45)
+    print("           ⭐ WEATHER SCORE")
+    print("=" * 45)
+
+    print(f"\n📍 Cheonan")
+    print(f"{today['icon']} {today['weather']}")
+    print(f"\nToday's score:")
+    print(f"⭐ {weather_score(today['weather'], today['high'])}")
+
+def show_statistics():
+    average_high = sum(day["high"] for day in weather_data) / len(weather_data)
+    average_low = sum(day["low"] for day in weather_data) / len(weather_data)
+
+    warmest_day = max(weather_data, key=lambda day: day["high"])
+    coldest_day = min(weather_data, key=lambda day: day["low"])
+
+    print("\n" + "=" * 45)
+    print("          📊 WEATHER STATISTICS")
+    print("=" * 45)
+
+    print(f"\n📍 Cheonan, South Korea")
+    print(f"🌡️ Average High: {average_high:.1f}°C")
+    print(f"🌡️ Average Low : {average_low:.1f}°C")
+
+    print(
+        f"\n🔥 Warmest Day: "
+        f"{warmest_day['day']} ({warmest_day['high']}°C)"
+    )
+
+    print(
+        f"🥶 Coldest Day: "
+        f"{coldest_day['day']} ({coldest_day['low']}°C)"
+    )
+def random_weather_fact():
+    facts = [
+        "☀️ The Sun is a star!",
+        "🌧️ Rain helps plants and crops grow.",
+        "☁️ Clouds are made of tiny water droplets.",
+        "🌈 A rainbow can appear when sunlight passes through water droplets.",
+        "❄️ Snow is made of ice crystals."
+    ]
+
+    print("\n🎲 RANDOM WEATHER FACT")
+    print("-" * 45)
+    print(random.choice(facts))
+
 
 def main():
     while True:
@@ -153,7 +202,9 @@ def main():
         print("1. ☀️ Check today's weather")
         print("2. 📅 See 5-day forecast")
         print("3. 🎒 Get today's weather tip")
-        print("4. 🚪 Exit")
+        print("4. ⭐ Check weather score")
+        print("5. 🎲 Get a random weather fact")
+        print("6. 🚪 Exit")
 
         choice = input("\n👉 Enter your choice: ")
 
@@ -167,16 +218,21 @@ def main():
             show_tip()
 
         elif choice == "4":
+            show_score()
+
+        elif choice == "5":
+            random_weather_fact()
+
+        elif choice == "6":
             print("\n╔═══════════════════════════════════════════╗")
             print("║   👋 Thanks for using Cheonan Weather!   ║")
             print("║             See you next time!            ║")
             print("╚═══════════════════════════════════════════╝")
             break
 
-        else:
-            print("\n❌ Invalid choice.")
-            print("Please enter 1, 2, 3, or 4.")
-
+    else:
+        print("\n❌ Invalid choice.")
+        print("Please enter a number from 1 to 6.")
         input("\nPress Enter to return to the menu...")
 
 
