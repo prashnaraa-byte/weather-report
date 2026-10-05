@@ -78,6 +78,18 @@ def outfit_recommendation(high):
         return "🧥 A light jacket would be a good choice!"
     else:
         return "🧣 Wear something warm today!"
+    
+def weather_score(weather, high):
+    if weather == "Sunny" and 20 <= high <= 28:
+        return "⭐⭐⭐⭐⭐ Excellent!"
+    elif weather == "Partly Cloudy":
+        return "⭐⭐⭐⭐ Very Good!"
+    elif weather == "Cloudy":
+        return "⭐⭐⭐ Not Bad!"
+    elif weather == "Rainy":
+        return "⭐⭐ Could Be Better!"
+    else:
+        return "⭐⭐⭐ Average"
 
 
 def show_today():
@@ -95,6 +107,7 @@ def show_today():
 
     print(f"\n💡 Tip: {weather_tip(today['weather'])}")
     print(f"👕 Outfit: {outfit_recommendation(today['high'])}")
+    print(f"📊 Weather Score: {weather_score(today['weather'], today['high'])}")
 
 
 def show_forecast():
@@ -111,6 +124,7 @@ def show_forecast():
         print(f"💧 Humidity: {day['humidity']}%")
         print(f"💬 {weather_tip(day['weather'])}")
         print(f"👕 {outfit_recommendation(day['high'])}")
+        print(f"📊 Weather Score: {weather_score(day['weather'], day['high'])}")
         print("-" * 45)
 
 
